@@ -39,7 +39,7 @@ export default async function handler(req, res) {
         const time1 = Number(ti.split(":")[0]);
         const time2 = ti.split(":")[1];
         const time1formated = time1 == 12 ? 1 : time1 + 1;
-        const time = ((time1 + "0").length >= 2 ? time1 : "0" + time1) + ":" + time2;
+        const time = ((time1formated + "0").length >= 2 ? time1formated : "0" + time1formated) + ":" + time2;
 
         const scoreSpans = el.querySelectorAll(".AY_Inner .MT_Data .MT_Result span");
         const score =
@@ -76,5 +76,6 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Erreur lors du scraping" });
   }
 }
+
 
 
