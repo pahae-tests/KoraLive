@@ -35,10 +35,10 @@ export default async function handler(req, res) {
         const team2Name =
           el.querySelector(".AY_Inner .MT_Team.TM2 .TM_Name")?.textContent.trim() || "";
 
-        const ti = el.querySelector(".AY_Inner .MT_Data .MT_Time")?.textContent.trim() || "";
-        const time1 = Number(ti.split(":")[0]);
-        const time2 = ti.split(":")[1];
-        const time = (time1 >= 2 ? time1 - 2 : 12 + time1 - 2) + ":" + time2;
+        const time = el.querySelector(".AY_Inner .MT_Data .MT_Time")?.textContent.trim() || "";
+        // const time1 = ti.split(":")[0];
+        // const time2 = ti.split(":")[1];
+        // const time = (time1.length >= 2 ? time1 : "0" + time1) + ":" + time2;
 
         const scoreSpans = el.querySelectorAll(".AY_Inner .MT_Data .MT_Result span");
         const score =
@@ -75,3 +75,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: "Erreur lors du scraping" });
   }
 }
+
