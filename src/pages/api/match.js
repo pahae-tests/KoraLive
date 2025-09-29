@@ -1,5 +1,6 @@
 // /pages/api/match.js
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 let matchCache = {};
 const CACHE_DURATION = 2 * 60 * 1000; // 2 minutes
@@ -14,7 +15,13 @@ export default async function handler(req, res) {
     }
 
     const url = `https://www.yalla1shoot.com/matches/${id}`;
-    const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+    });
+
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2" });
 
