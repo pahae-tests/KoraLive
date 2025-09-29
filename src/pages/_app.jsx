@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import styles from '../styles/globals.css'
+import React from 'react'
 import Head from 'next/head'
+import Script from 'next/script'
 import { useRouter } from 'next/router'
+import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -22,7 +23,36 @@ export default function MyApp({ Component, pageProps }) {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ar_MA" />
       </Head>
-      
+
+      {/* Adsterra Popunder */}
+      <Script
+        strategy="afterInteractive"
+        src="//pl27749896.revenuecpmgate.com/4a/21/f3/4a21f35bc7f0c5f33723695f0185a7f8.js"
+      />
+
+      {/* Adsterra Social Bar */}
+      <Script
+        strategy="afterInteractive"
+        src="//pl27749901.revenuecpmgate.com/5e/f4/aa/5ef4aa60d5d415dc97cef9e2a09de406.js"
+      />
+
+      {/* Adsterra Banner */}
+      <Script strategy="afterInteractive">
+        {`
+          atOptions = {
+            'key' : '3dfa7c9016a17fd3ec5de28788a19b0d',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        `}
+      </Script>
+      <Script
+        strategy="afterInteractive"
+        src="//www.highperformanceformat.com/3dfa7c9016a17fd3ec5de28788a19b0d/invoke.js"
+      />
+
       <Component {...pageProps} />
     </>
   );
